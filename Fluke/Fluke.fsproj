@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Common\Common.fs" />
+    <Compile Include="Task\TaskTypes.fs" />
+    <Compile Include="Task\Task.fs" />
+    <Compile Include="Parser\Parser.fs" />
+    <Compile Include="UI\UI.fs" />
+    <Compile Include="UseCase\UseCases.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 </Project>

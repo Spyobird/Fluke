@@ -1,23 +1,12 @@
-﻿open System
+﻿open Fluke.UseCases
+open System
 
-let fluke = "Fluke"
-
-let mutable exit = false
-
-let formattedPrint message = 
-    printfn "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\
-        %s\n\
-        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" message
-
-let echo message =
-    formattedPrint message
+let runLoop() =
+    printfn "Hello from Fluke\n"
+    while not doExit do
+        handleUses (Console.ReadLine())
 
 [<EntryPoint>]
 let main argv =
-    printfn "Hello from %s\n" fluke
-    while not exit do
-        let input = Console.ReadLine()
-        match input with
-        | "bye" -> exit <- true
-        | _ -> echo input
+    runLoop()
     0
