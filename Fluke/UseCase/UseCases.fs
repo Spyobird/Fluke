@@ -10,6 +10,16 @@ module UseCases =
         |> TaskRepository.addTask
         |> Result.map createMessage
 
+    let event arg = 
+        Task.event arg
+        |> TaskRepository.addTask
+        |> Result.map createMessage
+
+    let deadline arg = 
+        Task.deadline arg
+        |> TaskRepository.addTask
+        |> Result.map createMessage
+
     let list() =
         TaskRepository.listTasks()
         |> Result.map createMessage
@@ -23,6 +33,8 @@ module UseCases =
     let execute cmd =
         match cmd with
         | Todo arg -> todo arg
+        | Event arg -> event arg
+        | Deadline arg -> deadline arg
         | List -> list()
         | Echo msg -> echo msg
         | Bye -> bye()

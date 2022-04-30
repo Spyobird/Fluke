@@ -10,6 +10,8 @@ module Common =
 
     type Command = 
     | Todo of string
+    | Event of string
+    | Deadline of string
     | List
     | Echo of string
     | Bye
