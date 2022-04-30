@@ -9,5 +9,7 @@ module Common =
     let createMessage msg = Message msg
 
     type Command = 
+    | Todo of string
+    | List
     | Echo of string
     | Bye

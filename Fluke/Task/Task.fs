@@ -1,12 +1,15 @@
 ﻿namespace Fluke
 
-module Task = 
-
+module Task =
     open TaskTypes
 
-    let description desc = 
+    let createDescription desc = 
         Description desc
 
+    let taskDescription task =
+        match task with
+        | Todo (Description desc) ->  desc
+
     let todo desc =
-        Todo (description desc)
+        Todo (createDescription desc)
 

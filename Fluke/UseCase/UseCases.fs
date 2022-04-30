@@ -2,23 +2,33 @@
 
 module UseCases =
     open Common
-    open System
 
     let mutable doExit = false;
 
-    let echo msg = createMessage msg
+    let todo arg =
+        Task.todo arg
+        |> TaskRepository.addTask
+        |> Result.map createMessage
+
+    let list() =
+        TaskRepository.listTasks()
+        |> Result.map createMessage
+
+    let echo msg = Ok (createMessage msg)
 
     let bye() =
         doExit <- true
-        createMessage "Bye"
+        Ok (createMessage "See you later!")
 
     let execute cmd =
         match cmd with
-            | Echo msg -> echo msg
-            | Bye -> bye()
+        | Todo arg -> todo arg
+        | List -> list()
+        | Echo msg -> echo msg
+        | Bye -> bye()
 
     let handleUses input =
         Parser.parse input
-        |> Result.map execute
+        |> Result.bind execute
         |> UI.formattedPrint
        
