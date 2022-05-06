@@ -1,12 +1,4 @@
-﻿open Fluke.UseCases
-open System
-
-let runLoop() =
-    printfn "Hello from Fluke\n"
-    while not doExit do
-        handleUses (Console.ReadLine())
-
-[<EntryPoint>]
+﻿[<EntryPoint>]
 let main argv =
-    runLoop()
+    Fluke.Run.runLoop()
     0
